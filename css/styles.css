@@ -71,9 +71,24 @@ body{
 }
 .ingreso{
 	grid-area: main;
+	flex-direction: column;
+}
+.ingreso h4{
+	display: block;
+}
+.ingreso input{
+	display: block;
 }
 .descarga{
 	grid-area: foot;
+	flex-direction: column;
+}
+.descarga p{
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+.descarga a{
+	padding-top: 10px;
 }
 .algoritmo .metodos{
 	margin-top: 10px; 
@@ -83,4 +98,8 @@ body{
 }
 .descarga a{
 	color: blue;
+}
+
+.error{
+	color: red;
 }
