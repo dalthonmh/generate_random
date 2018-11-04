@@ -23,13 +23,56 @@ if (isset($_POST['submit'])) {
 	}else{
 		$errores .= 'constante inválida <br>';
 	}
-
-
 }else{
 	$semilla = 0;
 	$iteraciones = 0;
 	$constante = 0;
 }
+
+/*
+	ALGORITMO MULTIPLICADOR CONSTANTE
+*/
+$handle = fopen("reportes/file01.txt", "w+");	//modo para lectura y escritura
+
+$numeros = [];
+$x[0] = (int)$semilla;
+$texto=[];
+for ($i=1; $i <= $iteraciones; $i++) { 
+	$x[$i] = $constante*$x[$i-1];
+	$digito = (string)$x[$i];
+	if ((strlen($digito)%2 === 0) && (strlen($digito) ===8)) {
+		$digito = substr($digito, 2,4);
+	}
+	else{
+		(strlen($digito) === 5)? $digito = substr($digito,0,4) : $digito = substr($digito,1,4);
+	}
+	$r[$i] = "0,".$digito;
+	$x[$i] = (int)$digito;
+	// echo "<br>".$r[$i];
+	$texto = $r[$i].chr(13).chr(10);
+	$numeros[$i] = $r[$i];
+	$numeros[$i] = (float)str_replace(",", ".", $numeros[$i]);
+	fwrite($handle, $texto);
+}
+
+/*	PRUEBA DE MEDIAS	*/
+$aceptacion = '';
+// var_dump(($numeros));
+	if (count($numeros)==true) {
+		$n = count($numeros);
+		$f = array_sum($numeros) / count($numeros);
+
+		$liminf95 = 0.5-1.96*(1/sqrt(12*$n)).'<br>';
+		$limsup95 = 0.5+1.96*(1/sqrt(12*$n)).'<br>';
+
+		if($f<$limsup95 && $f>$liminf95){
+			$aceptacion = "Aceptada";
+		}else{
+			$aceptacion = "Rechazada";
+		}
+	}
+
+	// var_dump($iteraciones);
 
 ?>
 <!DOCTYPE html>
@@ -55,19 +98,28 @@ if (isset($_POST['submit'])) {
 		<div class="grid-item ingreso">
 			<h4>INGRESO DE DATOS</h4>
 			<br>
-			<form action="index.php" method="POST">
+			<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
 				<table>
 					<tr>
 						<td>Iteraciones :</td>
-						<td><input type="text" name="iteraciones" value="10"></td>
+						<td><input type="text" 
+							name="iteraciones" 
+							id="iteraciones" 
+							value="<?php echo $iteraciones ?>"></td>
 					</tr>
 					<tr>
 						<td>Constante :</td>
-						<td><input type="text" name="constante" value="6965"></td>
+						<td><input type="text" 
+							name="constante" 
+							id="constante" 
+							value="<?php echo $constante; ?>"></td>
 					</tr>
 					<tr>
 						<td>Semilla :</td>
-						<td><input type="text" name="semilla" value="9803"></td>
+						<td><input type="text" 
+							name="semilla" 
+							id="semilla" 
+							value="<?php echo $semilla; ?>"></td>
 					</tr>
 					<?php if(!empty($errores)): ?>
 					<tr>
@@ -75,30 +127,39 @@ if (isset($_POST['submit'])) {
 					</tr>
 					<?php endif; ?>
 					<tr>
-						<td><input type="submit" name="submit" value="Generar"></td>
+						<td><input type="submit" name="submit" value="Generar" id="submit"></td>
 					</tr>
 				</table>
 			</form>
 		</div>
 		<div class="grid-item descarga">
-			<p>Confiabilidad: <span>95%</span></p>
+			<?php if(count($numeros)==true): ?>
+			<p>Prueba de confiabilidad: <span><?php echo $aceptacion; ?></span></p>
 			<a href="reportes/file01.txt" download="aleatorios">
 				Descargar Resultados
 			</a>
+			<?php else: ?>
+			<p>Resultados</p>
+			<?php endif; ?>
 		</div>
 	</section>
 	<footer>
 		
 	</footer>
+	<script>
+
+		
+		document.getElementById("submit").onclick = function(){
+			var iteraciones = document.getElementById("iteraciones").value;
+			var constante = document.getElementById("constante").value;
+			var semilla = document.getElementById("semilla").value;
+			iteraciones.value=iteraciones;
+			constante.value=constante;
+			semilla.value=semilla;
+			console.log(iteraciones);
+		}
+			// console.log('hola');
+
+	</script>
 </body>
 </html>
-
-
-		<!-- 		<label for="iteraciones">iteraciones</label>
-				<input type="text" id="iteraciones" name="iteraciones" value="10">
-				<label for="iteraciones">constante</label>
-				<input type="text" id="iteraciones" name="constante" value="6965">
-				<label for="semilla">semilla</label>
-				<input type="text" id="semilla" name="semilla" value="9803">
-				<br>
-				<input type="submit" value="Generar"> -->
