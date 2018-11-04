@@ -83,7 +83,7 @@ body{
 	grid-area: foot;
 	flex-direction: column;
 }
-.descarga p{
+.descarga .prueba{
 	padding: 10px;
 	border-bottom: 1px solid #eee;
 }
@@ -102,4 +102,12 @@ body{
 
 .error{
 	color: red;
+}
+.descarga .aceptada{
+	color: #44B800;
+	font-weight: 1000;
+}
+.descarga .rechazada{
+	color: red;
+	font-weight: 1000;
 }

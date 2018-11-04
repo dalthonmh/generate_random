@@ -134,7 +134,9 @@ $aceptacion = '';
 		</div>
 		<div class="grid-item descarga">
 			<?php if(count($numeros)==true): ?>
-			<p>Prueba de confiabilidad: <span><?php echo $aceptacion; ?></span></p>
+			<p class="prueba">Prueba de medias: 
+				<span class="<?php if($aceptacion=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $aceptacion; ?></span>
+			</p>
 			<a href="reportes/file01.txt" download="aleatorios">
 				Descargar Resultados
 			</a>
