@@ -20,23 +20,23 @@
 					INGRESO DE DATOS
 				</div>
 				<div class="box-body">
-					<form action="">
+					<form action="" method="POST" class="input-form">
 						<table>
 							<tr>
 								<td>Iteraciones:</td>
 								<td><input type="text"></td>
 							</tr>
 							<tr>
-								<td>Constante</td>
+								<td>Constante:</td>
 								<td><input type="text"></td>
 							</tr>
 							<tr>
-								<td>Semilla</td>
+								<td>Semilla:</td>
 								<td><input type="text"></td>
 							</tr>
 							<tr>
 								<td></td>
-								<td><input type="submit" value="Generar"></td>
+								<td><input type="submit" value="Generar" id="btn-generar"></td>
 							</tr>
 						</table>
 					</form>
@@ -73,9 +73,8 @@
 				</div>
 				<div class="box-body">
 					<div class="box-body-firstpart">
-						<a href="#">Descargar</a>
+						<a href="#"><img src="svg/icon-download.svg" alt="img-decarga"> Descargar</a>
 					</div>
-					<hr>
 					<div class="box-body-secondpart">
 						<p>Sobre la aplicación</p>
 						<p>Algoritmo: Multiplicador Constante</p>
