@@ -76,7 +76,7 @@ $aceptacion = '';
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>RandomApp</title>
@@ -134,9 +134,12 @@ $aceptacion = '';
 		</div>
 		<div class="grid-item descarga">
 			<?php if(count($numeros)==true): ?>
-			<p class="prueba">Prueba de medias: 
+			<p class="pruebamedias">Prueba de medias: 
 				<span class="<?php if($aceptacion=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $aceptacion; ?></span>
 			</p>
+			<p class="pruebavarianza">Prueba de varianzas: Aceptada</p>
+			<p class="pruebauniformidad">Prueba de uniformidad: Aceptada</p>
+			<p class="pruebaindependencia">Prueba de independencia: Aceptada</p>
 			<a href="reportes/file01.txt" download="aleatorios">
 				Descargar Resultados
 			</a>

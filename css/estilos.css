@@ -1,0 +1,111 @@
+@font-face {
+    font-family:Nunito;
+    src:url(../fonts/Nunito/Nunito-ExtraLight.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+	height: 100vh;
+	font-family: 'Nunito';
+	background: #F9F9F9;
+}
+.body-container{
+	height: 90vh;
+	display: grid;
+	grid-template-rows: 5vh 1fr 5vh;
+}
+/*---------header---------*/
+.header, .footer{
+	background: #191919;
+	height: 5vh;
+	display: flex;
+	align-items: center;
+}
+.header-title{
+	font-size: .9em;
+	font-weight: 100;
+	color: #fff;
+	padding-left: .5em;
+}
+.footer{
+	justify-content: flex-end;
+}
+.info-footer{
+	color: #fff;
+	padding-right: .5em;
+}
+/*------main box------*/
+.main-box{
+	height: 90vh;
+	display: grid;
+	grid-template-columns: repeat(8,1fr);
+	grid-template-rows: repeat(8,1fr);
+	grid-gap: 20px;
+	padding: 20px;
+}
+.box-info{
+	display: grid;
+	height: 100%;
+	grid-template-rows: 15% 1fr;
+	border-radius: 10px;
+	box-shadow: 0 1px 2px rgba(25,25,25,0.2);
+	background: #fff;
+}
+.box-head{
+	background: #191919;
+	display: block;
+	border-radius: 10px 10px 0 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 13px;
+}
+.box-body{
+	/*background: lightgreen;*/
+	display: block;
+	border-radius: 0 0 10px 10px;
+}
+
+.ingreso-datos{
+	grid-column-start: 1;
+  	grid-column-end: 5;
+  	grid-row-start: 1;
+  	grid-row-end: 5;
+}
+.validaciones{
+	grid-column-start: 5;
+  	grid-column-end: 9;
+  	grid-row-start: 1;
+  	grid-row-end: 5;
+}
+.resultados{
+	grid-column-start: 1;
+  	grid-column-end: 9;
+  	grid-row-start: 5;
+  	grid-row-end: 9;
+}
+.validaciones .box-body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*background: tomato;*/
+	padding: 2em 8em;
+}
+.prueba-table{
+	/*background: skyblue;*/
+	height: 100%;
+	width: 100%;
+}
+.prueba-table .aceptada{
+	color: #10B22B;
+	font-weight: 800;
+}
+.prueba-table .rechazada{
+	color: #B12508;
+	font-weight: 800;
+}
