@@ -43,8 +43,9 @@ body{
 	padding-right: .5em;
 }
 /*------main box------*/
+
 .main-box{
-	height: 90vh;
+	min-height: 90vh;
 	display: grid;
 	grid-template-columns: repeat(8,1fr);
 	grid-template-rows: repeat(8,1fr);
@@ -61,7 +62,7 @@ body{
 }
 .box-head{
 	background: #191919;
-	display: block;
+	/*display: block;*/
 	border-radius: 10px 10px 0 0;
 	display: flex;
 	align-items: center;
@@ -70,7 +71,6 @@ body{
 	font-size: 13px;
 }
 .box-body{
-	/*background: lightgreen;*/
 	display: block;
 	border-radius: 0 0 10px 10px;
 }
@@ -97,14 +97,13 @@ body{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	/*background: tomato;*/
-	padding: 2em 8em;
+	padding: 3.5em;
 }
 .prueba-table{
-	/*background: skyblue;*/
 	height: 100%;
 	width: 100%;
 }
+
 .prueba-table .aceptada{
 	color: #10B22B;
 	font-weight: 800;
@@ -120,19 +119,15 @@ body{
 	padding: 2em 5em;
 }
 .input-form{
-	/*background: tomato;*/
 	height: 100%;
 	width: 100%;
 }
 .input-form table{
-	/*background: tomato;*/
 	height: 100%;
 	width: 100%;
 }
 .box-body .input-form input{
 	height: 30px;
-    /*background: blue;*/
-    /*border-radius: 6px;*/
     line-height: 30px;
     width: 100%;
     outline: none;
@@ -144,7 +139,7 @@ body{
 	font-family: Nunito-bold, san-serif;
 	background: #1A73E8;
 	color: #fff;
-	width: 40%;
+	width: 80px;
 	display: block;
 	float: right;
 	outline-width: 0;
@@ -197,3 +192,83 @@ body{
 .resultados .box-body .box-body-firstpart a{
 	color: #1A73E8;
 }
+
+@media (max-width: 900px){
+	#btn-generar{
+		width: 75px;
+	}
+	.ingreso-datos .box-body{
+		padding: 2em 3em;
+	}
+	.validaciones .box-body{
+		padding: 2em;
+	}
+}
+
+@media (max-width: 520px){
+	.main-box{
+		font-size: 14px;
+	}
+	.main-box{
+		min-height: 100vh;
+		display: grid;
+		grid-template-columns: repeat(8,1fr);
+		grid-template-rows: repeat(20,1fr);
+		grid-gap: 15px;
+		padding: 15px;
+	}
+	.ingreso-datos{
+		grid-column-start: 1;
+	  	grid-column-end: 9;
+	  	grid-row-start: 1;
+	  	grid-row-end: 7;
+	}
+	.validaciones{
+		grid-column-start: 1;
+	  	grid-column-end: 9;
+	  	grid-row-start: 7;
+	  	grid-row-end: 14;
+	}
+	.resultados{
+		grid-column-start: 1;
+	  	grid-column-end: 9;
+	  	grid-row-start: 14;
+	  	grid-row-end: 21;
+	}
+	.ingreso-datos .box-body{
+		padding: .5em 1em;
+	}
+	.resultados .box-body{
+		grid-template-columns: 35% 1fr;
+	}
+}
+@media (max-width: 420px){
+	.main-box{
+		font-size: 14.5px;
+		min-height: 150vh;
+		display: grid;
+		grid-template-columns: repeat(8,1fr);
+		grid-template-rows: repeat(23,1fr);
+		grid-gap: 10px;
+		padding: 10px;
+	}
+	.ingreso-datos{
+		grid-column-start: 1;
+	  	grid-column-end: 9;
+	  	grid-row-start: 1;
+	  	grid-row-end: 8;
+	}
+	.validaciones{
+		grid-column-start: 1;
+	  	grid-column-end: 9;
+	  	grid-row-start: 8;
+	  	grid-row-end: 16;
+	}
+	.resultados{
+		grid-column-start: 1;
+	  	grid-column-end: 9;
+	  	grid-row-start: 16;
+	  	grid-row-end: 24;
+	}
+}
+
