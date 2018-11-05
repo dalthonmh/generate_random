@@ -18,14 +18,14 @@ body{
 	background: #F9F9F9;
 }
 .body-container{
-	height: 90vh;
+	height: 100%;
 	display: grid;
-	grid-template-rows: 5vh 1fr 5vh;
+	grid-template-rows: 60px 1fr 50px;
 }
 /*---------header---------*/
 .header, .footer{
 	background: #191919;
-	height: 5vh;
+	height: 50px;
 	display: flex;
 	align-items: center;
 }
@@ -45,7 +45,7 @@ body{
 /*------main box------*/
 
 .main-box{
-	min-height: 90vh;
+	/*min-height: 100%;*/
 	display: grid;
 	grid-template-columns: repeat(8,1fr);
 	grid-template-rows: repeat(8,1fr);
@@ -197,6 +197,9 @@ body{
 	#btn-generar{
 		width: 75px;
 	}
+	.main-box{
+		/*min-height: 90vh;*/
+	}
 	.ingreso-datos .box-body{
 		padding: 2em 3em;
 	}
@@ -208,6 +211,7 @@ body{
 @media (max-width: 520px){
 	.main-box{
 		font-size: 14px;
+		/*min-height: 90vh;*/
 	}
 	.main-box{
 		min-height: 100vh;
