@@ -275,4 +275,10 @@ body{
 	  	grid-row-end: 24;
 	}
 }
+.error{
+	color: red;
+}
+.waiting{
+	color: #3498db;
+}
 
