@@ -55,6 +55,11 @@ for ($i=1; $i <= $iteraciones; $i++) {
 }
 
 /*	PRUEBA DE MEDIAS	*/
+/*-----PhpSpreadsheet-----*/
+require 'vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 $aceptacion = '';
 $varianza = '';
 
@@ -75,9 +80,59 @@ $varianza = '';
 		for ($i=1; $i <= $n; $i++) { 
 			$var = $var + pow(($numeros[$i]-$f), 2);
 		}
-		$varianza = $var / $n;
-	}
+		$varianza = $var / ($n-1);
 
+		// echo stats_variance($numeros);
+		// $nmenosuno = $n-1;
+
+		//ruta a guardar el archivo
+		$ruta = "reportes/";
+		//creacion del libro de trabajo
+		$spreadsheet = new Spreadsheet();
+		//accedemos al objeto de la hoja
+		$sheet = $spreadsheet->getActiveSheet();
+		
+		
+		
+		$sheet->setCellValue('A1','FORMULA');
+		$sheet->setCellValue('B1','VALOR');
+		$sheet->setCellValue('A2','a/2');
+		$sheet->setCellValue('A3','1-(a/2)');
+		$sheet->setCellValue('A4','LI');
+		$sheet->setCellValue('A5','LS');
+
+		$sheet->setCellValue('B2',
+			\PhpOffice\PhpSpreadsheet\Calculation\Statistical::CHIINV(0.025,($n-1))
+		);
+		// $sheet->setCellValue('B2',"=CHISQ.INV(0.025;99)");
+		$sheet->setCellValue('B3',
+			\PhpOffice\PhpSpreadsheet\Calculation\Statistical::CHIINV(0.975,($n-1))
+		);
+		$sheet->setCellValue('B4',"=B2/(12*$n)");
+		$sheet->setCellValue('B5',"=B3/(12*$n)");
+
+		$sheet->setCellValue('A6','var');
+		$sheet->setCellValue('B6',$varianza);
+
+		$writer = new Xlsx($spreadsheet);
+
+		try{
+			$writer->save($ruta.'file02.xlsx');
+		}
+		catch(Exception $e){
+			echo $e->getMessage();
+		}
+		$liInfvar = $sheet->getCell('B4')->getCalculatedValue();
+		$liSupvar = $sheet->getCell('B5')->getCalculatedValue();
+
+		if ($varianza<$liInfvar && $varianza>$liSupvar) {
+			$varianza='Aceptada';
+		}
+		else{
+			$varianza='Rechazada';
+		}
+		// echo($liInfvar.' '.$varianza.' '.$liSupvar);
+	}
 
 ?>
 <!DOCTYPE html>
