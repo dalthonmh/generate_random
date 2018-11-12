@@ -53,13 +53,21 @@ for ($i=1; $i <= $iteraciones; $i++) {
 	$numeros[$i] = (float)str_replace(",", ".", $numeros[$i]);
 	fwrite($handle, $texto);
 }
+/*------------------------------------*/
+/*	------------PRUEBAS------------	*/
+/*------------------------------------*/
 
-/*	PRUEBA DE MEDIAS	*/
 /*-----PhpSpreadsheet-----*/
 require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
+/*-----PhpSpreadsheet-----*/
 
+/*Prueba de varianza*/
+/*
+	Esta prueba se realiza con cualquier rango de valores, lo que hace es hallar la media de los aleatorios para luego mediante la distribucion normal con un nivel de confianza de 95% se hallen los limites superiores e inferiores.
+*/
 $aceptacion = '';
 $varianza = '';
 
@@ -76,7 +84,10 @@ $varianza = '';
 		}else{
 			$aceptacion = "Rechazada";
 		}
-		
+		/*PRUEBA DE MEDIAS*/
+		/*
+			Nota: esta prueba es valida solo para una cantidad menor de 100 numeros aleatorios
+		*/
 		for ($i=1; $i <= $n; $i++) { 
 			$var = $var + pow(($numeros[$i]-$f), 2);
 		}
@@ -102,11 +113,11 @@ $varianza = '';
 		$sheet->setCellValue('A5','LS');
 
 		$sheet->setCellValue('B2',
-			\PhpOffice\PhpSpreadsheet\Calculation\Statistical::CHIINV(0.025,($n-1))
+			Statistical::CHIINV(0.025,($n-1))
 		);
 		// $sheet->setCellValue('B2',"=CHISQ.INV(0.025;99)");
 		$sheet->setCellValue('B3',
-			\PhpOffice\PhpSpreadsheet\Calculation\Statistical::CHIINV(0.975,($n-1))
+			Statistical::CHIINV(0.975,($n-1))
 		);
 		$sheet->setCellValue('B4',"=B2/(12*$n)");
 		$sheet->setCellValue('B5',"=B3/(12*$n)");
@@ -132,7 +143,54 @@ $varianza = '';
 			$varianza='Rechazada';
 		}
 		// echo($liInfvar.' '.$varianza.' '.$liSupvar);
+		
+		/*-------PRUEBA DE UNIFORMIDAD-------*/
+		/*
+			prueba de chi cuadrada
+		*/
+
+		$m = sqrt($n);
+		$mint = intval($m);
+
+		// echo intval($n/$m);
+		// echo (int)$n/$m;
+		$fesperada[0][0]=0;
+		$cont = 0;
+		// for ($i=0; $i <$mint ; $i++) { 
+		// 	for ($j=1; $j <= $n; $j++) { 
+		// 		if (($numeros[$j]>0.0) && ($numeros[$j]<0.1)) {
+		// 			$fesperada[$i][$cont]=$numeros[$j];
+		// 			$cont++;
+		// 		}
+		// 	}
+		// }
+
+
+		$inicio= 0.0;
+		$mparcial = 1/$m;
+		$inc = 1; //incrementador
+		for ($i=0; $i <$mint ; $i++) { 
+			$final = $inc*$mparcial;
+			if ($i == $mint-1) {
+				$final = 1.0;
+			}
+			/*condicion */
+			for ($j=1; $j <= $n; $j++) { 
+				if (($numeros[$j]>$inicio) && ($numeros[$j]<$final)) {
+					$fesperada[$i][$cont]=$numeros[$j];
+					$cont++;
+				}
+			}
+			/*fin condición*/
+			// var_dump($inicio);
+			// var_dump($final);
+			$inicio = $final;
+			$inc++;
+		}
+		var_dump($fesperada);
+		
 	}
+
 
 ?>
 <!DOCTYPE html>
