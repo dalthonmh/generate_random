@@ -70,6 +70,7 @@ use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 */
 $aceptacion = '';
 $varianza = '';
+$chiquad = '';
 
 	if (count($numeros)==true) {
 		$n = count($numeros);
@@ -111,6 +112,8 @@ $varianza = '';
 		$sheet->setCellValue('A3','1-(a/2)');
 		$sheet->setCellValue('A4','LI');
 		$sheet->setCellValue('A5','LS');
+		$sheet->setCellValue('A6','var');
+		$sheet->setCellValue('A7','tablaXa,n');
 
 		$sheet->setCellValue('B2',
 			Statistical::CHIINV(0.025,($n-1))
@@ -122,9 +125,16 @@ $varianza = '';
 		$sheet->setCellValue('B4',"=B2/(12*$n)");
 		$sheet->setCellValue('B5',"=B3/(12*$n)");
 
-		$sheet->setCellValue('A6','var');
 		$sheet->setCellValue('B6',$varianza);
 
+		/*dato para prueba chi-cuadrado*/
+		$m = sqrt($n);
+		$mint = intval($m);
+
+		$sheet->setCellValue('B7',
+			Statistical::CHIINV(0.05,($mint-1))
+		);
+		/*fin dato pueba*/
 		$writer = new Xlsx($spreadsheet);
 
 		try{
@@ -185,7 +195,14 @@ $varianza = '';
 		}
 		// var_dump($fobservada);
 		// echo "<br>".$chiparcial;
+		$limchiq= $sheet->getCell('B7')->getCalculatedValue();
 		
+		if ($chiquad<$limchiq) {
+			$chiquad='Aceptada';
+		}
+		else{
+			$chiquad='Rechazada';
+		}
 
 	}
 
@@ -276,7 +293,13 @@ $varianza = '';
 						</tr>
 						<tr>
 							<td class="prueba">Prueba de Uniformidad</td>
-							<td><span class="rechazada">Rechazada</span></td>
+							<td>
+								<?php if (count($numeros)==true): ?>
+									<span class="<?php if($chiquad=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $chiquad; ?></span>
+								<?php else: ?>
+									<span class="waiting">waiting...</span>
+								<?php endif; ?>
+							</td>
 						</tr>
 						<tr>
 							<td class="prueba">Prueba de Independencia</td>
