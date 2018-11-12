@@ -151,20 +151,8 @@ $varianza = '';
 
 		$m = sqrt($n);
 		$mint = intval($m);
-
-		// echo intval($n/$m);
-		// echo (int)$n/$m;
-		$fesperada[0][0]=0;
+		$fobservada[0][0]=0; //Oi Frecuencia observada
 		$cont = 0;
-		// for ($i=0; $i <$mint ; $i++) { 
-		// 	for ($j=1; $j <= $n; $j++) { 
-		// 		if (($numeros[$j]>0.0) && ($numeros[$j]<0.1)) {
-		// 			$fesperada[$i][$cont]=$numeros[$j];
-		// 			$cont++;
-		// 		}
-		// 	}
-		// }
-
 
 		$inicio= 0.0;
 		$mparcial = 1/$m;
@@ -177,18 +165,28 @@ $varianza = '';
 			/*condicion */
 			for ($j=1; $j <= $n; $j++) { 
 				if (($numeros[$j]>$inicio) && ($numeros[$j]<$final)) {
-					$fesperada[$i][$cont]=$numeros[$j];
+					$fobservada[$i][$cont]=$numeros[$j];
 					$cont++;
 				}
 			}
 			/*fin condición*/
-			// var_dump($inicio);
-			// var_dump($final);
 			$inicio = $final;
 			$inc++;
 		}
-		var_dump($fesperada);
+		/*fin agregacion intervalos y frecuencia observada*/
+		$fobscount = count($fobservada);
+		$fesperada = $n/$m; //Ei Frecuencia esperada
+		$chiparcial = 0.00;
+
+		for ($i=0; $i < $fobscount; $i++) { 
+			// echo count($fobservada[$i])."<br>";
+			$chiparcial = $chiparcial + pow(($fesperada-count($fobservada[$i])), 2)/$fesperada;
+			// $chiparcial = $chiparcial + (Ei-Oi)^2/Ei
+		}
+		// var_dump($fobservada);
+		// echo "<br>".$chiparcial;
 		
+
 	}
 
 
