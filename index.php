@@ -301,10 +301,7 @@ $chiquad = '';
 								<?php endif; ?>
 							</td>
 						</tr>
-						<tr>
-							<td class="prueba">Prueba de Independencia</td>
-							<td><span class="aceptada">Aceptada</span></td>
-						</tr>
+						
 					</table>
 				</div>
 			</section>
