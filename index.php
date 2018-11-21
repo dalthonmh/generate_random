@@ -81,9 +81,9 @@ $chiquad = '';
 		$limsup95 = 0.5+1.96*(1/sqrt(12*$n)).'<br>';
 
 		if($f<$limsup95 && $f>$liminf95){
-			$aceptacion = "Aceptada";
+			$estadomedia = "Aceptada";
 		}else{
-			$aceptacion = "Rechazada";
+			$estadomedia = "Rechazada";
 		}
 		/*PRUEBA DE MEDIAS*/
 		/*
@@ -147,10 +147,10 @@ $chiquad = '';
 		$liSupvar = $sheet->getCell('B5')->getCalculatedValue();
 
 		if ($varianza<$liInfvar && $varianza>$liSupvar) {
-			$varianza='Aceptada';
+			$estadovarianza='Aceptada';
 		}
 		else{
-			$varianza='Rechazada';
+			$estadovarianza='Rechazada';
 		}
 		// echo($liInfvar.' '.$varianza.' '.$liSupvar);
 		
@@ -198,10 +198,10 @@ $chiquad = '';
 		$limchiq= $sheet->getCell('B7')->getCalculatedValue();
 		
 		if ($chiquad<$limchiq) {
-			$chiquad='Aceptada';
+			$estadochiquad='Aceptada';
 		}
 		else{
-			$chiquad='Rechazada';
+			$estadochiquad='Rechazada';
 		}
 
 	}
@@ -271,37 +271,50 @@ $chiquad = '';
 				</div>
 				<div class="box-body">
 					<table class="prueba-table">
-						<tr>
-							<td class="prueba">Prueba de Medias</td>
-							<td>
-								<?php if(count($numeros)==true): ?>
-								<span class="<?php if($aceptacion=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $aceptacion; ?></span>
-								<?php else: ?>
-									<span class="waiting">waiting...</span>
-							<?php endif; ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="prueba">Prueba de Varianza</td>
-							<td>
-								<?php if (count($numeros)==true): ?>
-									<span class="<?php if($varianza=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $varianza; ?></span>
-								<?php else: ?>
-									<span class="waiting">waiting...</span>
-								<?php endif; ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="prueba">Prueba de Uniformidad</td>
-							<td>
-								<?php if (count($numeros)==true): ?>
-									<span class="<?php if($chiquad=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $chiquad; ?></span>
-								<?php else: ?>
-									<span class="waiting">waiting...</span>
-								<?php endif; ?>
-							</td>
-						</tr>
-						
+						<thead>
+							<tr>
+								<th>Prueba</th>
+								<th>Estado</th>
+								<th>L. Inferior</th>
+								<th>Valor</th>
+								<th>L. Superior</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="prueba">Prueba de Medias</td>
+								<td>
+									<?php if(count($numeros)==true): ?>
+										<span class="<?php if($estadomedia=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $estadomedia; ?></span>
+									<?php else: ?>
+										<span class="waiting">waiting...</span>
+									<?php endif; ?>
+								</td>
+								<td>a</td>
+								<td>b</td>
+								<td>c</td>
+							</tr>
+							<tr>
+								<td class="prueba">Prueba de Varianza</td>
+								<td>
+									<?php if (count($numeros)==true): ?>
+										<span class="<?php if($estadovarianza=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $estadovarianza; ?></span>
+									<?php else: ?>
+										<span class="waiting">waiting...</span>
+									<?php endif; ?>
+								</td>
+							</tr>
+							<tr>
+								<td class="prueba">Prueba de Uniformidad</td>
+								<td>
+									<?php if (count($numeros)==true): ?>
+										<span class="<?php if($estadochiquad=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $estadochiquad; ?></span>
+									<?php else: ?>
+										<span class="waiting">waiting...</span>
+									<?php endif; ?>
+								</td>
+							</tr>
+						</tbody>
 					</table>
 				</div>
 			</section>
@@ -318,7 +331,7 @@ $chiquad = '';
 						<p>Algoritmo: Multiplicador Constante</p>
 						<p>Lenguaje de Programación: php</p>
 						<p>Base de Datos: mysql</p>
-						<p>Codigo funte: <a href="#">source</a></p>
+						<p>Codigo funte: <a href="https://github.com/D4ITON/generate_random" target="_blank">source</a></p>
 						<p>Versión: 1.0.0</p>
 					</div>
 				</div>
