@@ -98,7 +98,7 @@ body{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 3.5em;
+	padding: 25px;
 }
 .prueba-table{
 	height: 100%;
@@ -149,10 +149,15 @@ body{
 	border: none;
 	height: 32px;
 	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: .75em;
+	margin: 3px;
 }
 #btn-generar:hover{
 	cursor: pointer;
-	box-shadow: 0 1px 2px rgb(26,115,232,0.2);
+	box-shadow: 0 2px 3px rgb(26,115,232,0.2);
 }
 
 .resultados .box-body{
@@ -212,7 +217,7 @@ body{
 		padding: 2em 3em;
 	}
 	.validaciones .box-body{
-		padding: 2em;
+		padding: 10px;
 	}
 }
 
@@ -252,6 +257,9 @@ body{
 	}
 	.resultados .box-body{
 		grid-template-columns: 35% 1fr;
+	}
+	.validaciones .box-body{
+		padding: 10px;
 	}
 }
 @media (max-width: 420px){

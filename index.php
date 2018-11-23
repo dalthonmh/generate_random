@@ -216,6 +216,7 @@ $chiquad = '';
 	}
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -268,7 +269,8 @@ $chiquad = '';
 
 							<tr>
 								<td></td>
-								<td><input type="submit" name="submit" value="Generar" id="btn-generar"></td>
+								<td><input type="submit" name="submit" value="Generar" id="btn-generar">
+								<a href="<?php $_SERVER['PHP_SELF']; ?>" id="btn-generar">Recargar</a></td>
 							</tr>
 						</table>
 					</form>
@@ -362,10 +364,8 @@ $chiquad = '';
 					<div class="box-body-firstpart">
 						<a href="reportes/file01.txt" 
 							class="<?php if(count($numeros))echo('active');else echo('not-active'); ?>"
-							 
 							download="aleatorios">
-							
-							<img src="svg/<?php if(count($numeros))echo('icon-download');else echo('icon-download-disabled'); ?>.svg" alt="img-decarga"> Descargar</a>
+							<img src="svg/<?php if(count($numeros))echo('icon-download');else echo('icon-download-disabled'); ?>.svg" alt="img-decarga"> Descargar resultados</a>
 					</div>
 					<div class="box-body-secondpart">
 						<p>Sobre la aplicación</p>
