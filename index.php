@@ -77,14 +77,18 @@ $chiquad = '';
 		$f = array_sum($numeros) / count($numeros);
 		$var = 0;
 
-		$liminf95 = 0.5-1.96*(1/sqrt(12*$n)).'<br>';
-		$limsup95 = 0.5+1.96*(1/sqrt(12*$n)).'<br>';
+		
+		$liInfMed = 0.5-1.96*(1/sqrt(12*$n)).'<br>';
+		$liSupMed = 0.5+1.96*(1/sqrt(12*$n)).'<br>';
 
-		if($f<$limsup95 && $f>$liminf95){
-			$estadomedia = "Aceptada";
+		if($f<$liSupMed && $f>$liInfMed){
+			$estadomedia = true; // aceptada
 		}else{
-			$estadomedia = "Rechazada";
+			$estadomedia = false; //rechazada
 		}
+		$liSupMed = round( $liSupMed, 4);
+		$liInfMed = round( $liInfMed, 4);
+		$f = round( $f, 4);
 		/*PRUEBA DE MEDIAS*/
 		/*
 			Nota: esta prueba es valida solo para una cantidad menor de 100 numeros aleatorios
@@ -147,11 +151,14 @@ $chiquad = '';
 		$liSupvar = $sheet->getCell('B5')->getCalculatedValue();
 
 		if ($varianza<$liInfvar && $varianza>$liSupvar) {
-			$estadovarianza='Aceptada';
+			$estadovarianza=true; // aceptada
 		}
 		else{
-			$estadovarianza='Rechazada';
+			$estadovarianza=false; // rechazada
 		}
+		$liSupvar = round( $liSupvar, 4);
+		$liInfvar = round( $liInfvar, 4);
+		$varianza = round( $varianza, 4);
 		// echo($liInfvar.' '.$varianza.' '.$liSupvar);
 		
 		/*-------PRUEBA DE UNIFORMIDAD-------*/
@@ -197,12 +204,14 @@ $chiquad = '';
 		// echo "<br>".$chiparcial;
 		$limchiq= $sheet->getCell('B7')->getCalculatedValue();
 		
-		if ($chiquad<$limchiq) {
-			$estadochiquad='Aceptada';
+		if ($chiparcial<$limchiq) {
+			$estadochiquad=true; // aceptada
 		}
 		else{
-			$estadochiquad='Rechazada';
+			$estadochiquad=false; // rechazada
 		}
+		$chiparcial = round($chiparcial,4);
+		$limchiq = round($limchiq,4);
 
 	}
 
@@ -281,39 +290,66 @@ $chiquad = '';
 							</tr>
 						</thead>
 						<tbody>
+							<?php if(count($numeros)==true): ?>
 							<tr>
 								<td class="prueba">Prueba de Medias</td>
 								<td>
-									<?php if(count($numeros)==true): ?>
-										<span class="<?php if($estadomedia=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $estadomedia; ?></span>
-									<?php else: ?>
-										<span class="waiting">waiting...</span>
-									<?php endif; ?>
+									<span class="<?php if($estadomedia==true)echo('aceptada');else echo('rechazada'); ?>">
+										<?php if($estadomedia==true)echo('aceptada');else echo('rechazada'); ?>
+									</span>
 								</td>
-								<td>a</td>
-								<td>b</td>
-								<td>c</td>
+								
+								<td><?php echo $liInfMed; ?></td>
+								<td><?php echo $f; ?></td>
+								<td><?php echo $liSupMed; ?></td>
+								
 							</tr>
 							<tr>
 								<td class="prueba">Prueba de Varianza</td>
 								<td>
-									<?php if (count($numeros)==true): ?>
-										<span class="<?php if($estadovarianza=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $estadovarianza; ?></span>
-									<?php else: ?>
-										<span class="waiting">waiting...</span>
-									<?php endif; ?>
+									<span class="<?php if($estadovarianza==true)echo('aceptada');else echo('rechazada'); ?>">
+										<?php if($estadovarianza==true)echo('aceptada');else echo('rechazada'); ?>
+									</span>
 								</td>
+								<td><?php echo $liInfvar; ?></td>
+								<td><?php echo $varianza; ?></td>
+								<td><?php echo $liSupvar; ?></td>
 							</tr>
 							<tr>
 								<td class="prueba">Prueba de Uniformidad</td>
 								<td>
-									<?php if (count($numeros)==true): ?>
-										<span class="<?php if($estadochiquad=='Aceptada')echo('aceptada');else echo('rechazada'); ?>"><?php echo $estadochiquad; ?></span>
-									<?php else: ?>
-										<span class="waiting">waiting...</span>
-									<?php endif; ?>
+									<span class="<?php if($estadochiquad==true)echo('aceptada');else echo('rechazada'); ?>">
+										<?php if($estadochiquad==true)echo('aceptada');else echo('rechazada'); ?>
+									</span>
 								</td>
+								<td></td>
+								<td><?php echo $chiparcial; ?></td>
+								<td><?php echo $limchiq; ?></td>
+								
 							</tr>
+						<?php else: ?>
+							<tr>
+								<td class="prueba">Prueba de Medias</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="prueba">Prueba de Varianza</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="prueba">Prueba de Uniformidad</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						<?php endif; ?>
 						</tbody>
 					</table>
 				</div>
