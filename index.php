@@ -23,9 +23,9 @@ if (isset($_POST['submit'])) {
 		$errores .= 'constante inválida <br>';
 	}
 }else{
-	$semilla = 0;
-	$iteraciones = 0;
-	$constante = 0;
+	$semilla = '';
+	$iteraciones = '';
+	$constante = '';
 }
 
 /*
@@ -195,9 +195,16 @@ $chiquad = '';
 		$fesperada = $n/$m; //Ei Frecuencia esperada
 		$chiparcial = 0.00;
 
+
 		for ($i=0; $i < $fobscount; $i++) { 
 			// echo count($fobservada[$i])."<br>";
+			// var_dump($fobservada[$i]);
+			// (!isset($i)==true)?continue:true;
+			if (!isset($fobservada[$i])) {
+				continue;
+			}
 			$chiparcial = $chiparcial + pow(($fesperada-count($fobservada[$i])), 2)/$fesperada;
+			// var_dump($chiparcial);
 			// $chiparcial = $chiparcial + (Ei-Oi)^2/Ei
 		}
 		// var_dump($fobservada);
@@ -239,6 +246,7 @@ $chiquad = '';
 				<div class="box-body">
 					<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="input-form">
 						<table>
+							<tr class="aceptada">Algoritmo: Multiplicador Constante</tr>
 							<tr>
 								<td>Iteraciones:</td>
 								<td><input 
@@ -371,7 +379,7 @@ $chiquad = '';
 						<p>Sobre la aplicación</p>
 						<p>Autor: Dalthon Mamani Hualpa</p>
 						<p>Curso: Simulación de Sistemas</p>
-						<p>Algoritmo: Multiplicador Constante</p>
+						<p>Docente: Ing. Luis Jhonson Paúl Mori Sosa</p>
 						<p>Lenguaje de Programación: php</p>
 						<p>Codigo funte: <a href="https://github.com/D4ITON/generate_random" target="_blank">source</a></p>
 						<p>Versión: 1.2.1</p>
