@@ -28,10 +28,11 @@ body{
 	height: 50px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 .header-title{
-	font-size: .9em;
-	font-weight: 100;
+	font-size: 1.2em;
+	font-weight: 500;
 	color: #fff;
 	padding-left: .5em;
 }
@@ -153,6 +154,7 @@ body{
 	cursor: pointer;
 	box-shadow: 0 1px 2px rgb(26,115,232,0.2);
 }
+
 .resultados .box-body{
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -189,8 +191,14 @@ body{
 	width: 1.3em;
 	height: 1em;
 }
-.resultados .box-body .box-body-firstpart a{
+.resultados .box-body .box-body-firstpart .active{
 	color: #1A73E8;
+}
+.resultados .box-body .box-body-firstpart .not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: #BDBABA;
 }
 
 @media (max-width: 900px){

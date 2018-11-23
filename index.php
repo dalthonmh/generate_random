@@ -228,7 +228,7 @@ $chiquad = '';
 <body>
 	<div class="body-container">
 		<header class="header">
-			<h2 class="header-title">GENERAR ALEATORIO</h2>
+			<h2 class="header-title">GENERADOR DE NÚMEROS ALEATORIOS</h2>
 		</header>
 		<main class="main-box">
 			<section class="box-info ingreso-datos">
@@ -360,15 +360,21 @@ $chiquad = '';
 				</div>
 				<div class="box-body">
 					<div class="box-body-firstpart">
-						<a href="reportes/file01.txt" download="aleatorios"><img src="svg/icon-download.svg" alt="img-decarga"> Descargar</a>
+						<a href="reportes/file01.txt" 
+							class="<?php if(count($numeros))echo('active');else echo('not-active'); ?>"
+							 
+							download="aleatorios">
+							
+							<img src="svg/<?php if(count($numeros))echo('icon-download');else echo('icon-download-disabled'); ?>.svg" alt="img-decarga"> Descargar</a>
 					</div>
 					<div class="box-body-secondpart">
 						<p>Sobre la aplicación</p>
+						<p>Autor: Dalthon Mamani Hualpa</p>
+						<p>Curso: Simulación de Sistemas</p>
 						<p>Algoritmo: Multiplicador Constante</p>
 						<p>Lenguaje de Programación: php</p>
-						<p>Base de Datos: mysql</p>
 						<p>Codigo funte: <a href="https://github.com/D4ITON/generate_random" target="_blank">source</a></p>
-						<p>Versión: 1.0.0</p>
+						<p>Versión: 1.2.1</p>
 					</div>
 				</div>
 			</section>
