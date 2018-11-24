@@ -13,7 +13,7 @@
     text-decoration: none;
 }
 body{
-	height: 100vh;
+	min-height: 100vh;
 	font-family: 'Nunito';
 	background: #F9F9F9;
 }
