@@ -280,7 +280,9 @@ $chiquad = '';
 								<td>Iteraciones:</td>
 								<td><input 
 									type="text" 
-									name="iteraciones" 
+									name="iteraciones"
+									required 
+									pattern="[0-9]{1,6}" 
 									value="<?php echo $iteraciones; ?>"></td>
 							</tr>
 							<tr>
@@ -288,6 +290,8 @@ $chiquad = '';
 								<td><input 
 									type="text" 
 									name="constante"
+									required 
+									pattern="[0-9]{1,6}" 
 									value="<?php echo $constante; ?>"></td>
 							</tr>
 							<tr>
@@ -295,6 +299,8 @@ $chiquad = '';
 								<td><input 
 									type="text" 
 									name="semilla"
+									required 
+									pattern="[0-9]{1,6}" 
 									value="<?php echo $semilla; ?>"></td>
 							</tr>
 							<?php if(!empty($errores)): ?>
