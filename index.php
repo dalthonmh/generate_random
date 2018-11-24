@@ -353,9 +353,9 @@ $chiquad = '';
 										<?php if($estadovarianza==true)echo('aceptada');else echo('rechazada'); ?>
 									</span>
 								</td>
-								<td><?php echo $liInfvar; ?></td>
-								<td><?php echo $varianza; ?></td>
 								<td><?php echo $liSupvar; ?></td>
+								<td><?php echo $varianza; ?></td>
+								<td><?php echo $liInfvar; ?></td>
 							</tr>
 							<tr>
 								<td class="prueba">Prueba de Uniformidad</td>

@@ -13,7 +13,7 @@
     text-decoration: none;
 }
 body{
-	min-height: 100vh;
+	height: 100vh;
 	font-family: 'Nunito';
 	background: #F9F9F9;
 }
@@ -226,6 +226,9 @@ body{
 }
 
 @media (max-width: 900px){
+	body{
+		min-height: 100vh;
+	}
 	#btn-generar{
 		width: 75px;
 	}
@@ -241,6 +244,9 @@ body{
 }
 
 @media (max-width: 520px){
+	body{
+		min-height: 100vh;
+	}
 	.header-title{
 		font-size: 15px;
 	}
@@ -281,8 +287,14 @@ body{
 	.validaciones .box-body{
 		padding: 10px;
 	}
+	.resultados .box-body .box-body-secondpart{
+		font-size: 12px;
+	}
 }
 @media (max-width: 420px){
+	body{
+		min-height: 100vh;
+	}
 	.main-box{
 		font-size: 14.5px;
 		min-height: 150vh;
