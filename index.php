@@ -129,9 +129,6 @@ $chiquad = '';
 		}
 		$varianza = $var / ($n-1);
 
-		// echo stats_variance($numeros);
-		// $nmenosuno = $n-1;
-
 		//ruta a guardar el archivo
 		$ruta = "reportes/";
 		//creacion del libro de trabajo
