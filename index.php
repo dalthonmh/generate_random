@@ -321,7 +321,7 @@ $chiquad = '';
 				</div>
 				<div class="box-body">
 					<table class="prueba-table">
-						<thead>
+						<thead align="center" class="thead">
 							<tr>
 								<th>Prueba</th>
 								<th>Estado</th>
@@ -330,7 +330,7 @@ $chiquad = '';
 								<th>L. Superior</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody align="center">
 							<?php if(count($numeros)==true): ?>
 							<tr>
 								<td class="prueba">Prueba de Medias</td>

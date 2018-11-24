@@ -105,6 +105,9 @@ body{
 	width: 100%;
 }
 
+.thead tr th{
+  border-bottom: 1px solid #eee; 
+}
 .prueba-table .aceptada{
 	color: #10B22B;
 	font-weight: 800;
