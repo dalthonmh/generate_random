@@ -32,9 +32,10 @@ body{
 }
 .header-title{
 	font-size: 1.2em;
-	font-weight: 500;
+	font-weight: 100;
 	color: #fff;
 	padding-left: .5em;
+	text-align: center;
 }
 .footer{
 	justify-content: flex-end;
@@ -103,6 +104,7 @@ body{
 .prueba-table{
 	height: 100%;
 	width: 100%;
+	font-size: 13px;
 }
 
 .thead tr th{
@@ -125,6 +127,7 @@ body{
 .input-form{
 	height: 100%;
 	width: 100%;
+	font-size: 14px;
 }
 .input-form table{
 	height: 100%;
@@ -169,21 +172,22 @@ body{
 	align-items: center;
 }
 .resultados .box-body .box-body-secondpart{
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-	flex-direction: column;
-	text-align: right;
-	width: 100%;
 	height: 93%;
+	width: 100%;
+	display: flex;
+	text-align: right;
+	font-size: 13px;
 	padding-right: 10%;
+	align-items: flex-end;
+	flex-direction: column;
+	justify-content: center;
 	border-left: 1px solid #eee;
 }
 .resultados .box-body .box-body-secondpart p{
 	padding: .2em;
 }
 .resultados .box-body .box-body-secondpart p:first-child{
-	border-bottom: 1px solid #707070;
+	border-bottom: 1px solid #eee;
 	display: inline;
 }
 .resultados .box-body .box-body-secondpart a{
@@ -195,6 +199,7 @@ body{
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	font-size: 14px;
 }
 .resultados .box-body .box-body-firstpart .title-download{
 	border-bottom: 1px solid #eee;
@@ -236,6 +241,9 @@ body{
 }
 
 @media (max-width: 520px){
+	.header-title{
+		font-size: 15px;
+	}
 	.main-box{
 		font-size: 14px;
 		/*min-height: 90vh;*/
@@ -269,9 +277,7 @@ body{
 	.ingreso-datos .box-body{
 		padding: .5em 1em;
 	}
-	.resultados .box-body{
-		grid-template-columns: 35% 1fr;
-	}
+	
 	.validaciones .box-body{
 		padding: 10px;
 	}

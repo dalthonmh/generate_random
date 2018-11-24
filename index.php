@@ -263,6 +263,7 @@ $chiquad = '';
 	<title>Generar Aleatorio</title>
 	<link rel="stylesheet" href="css/estilos.css">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="shorcut icon" href="svg/icon-aleatorio.svg">
 </head>
 <body>
 	<div class="body-container">
@@ -325,9 +326,9 @@ $chiquad = '';
 							<tr>
 								<th>Prueba</th>
 								<th>Estado</th>
-								<th>L. Inferior</th>
+								<th>Límite Inferior</th>
 								<th>Valor</th>
-								<th>L. Superior</th>
+								<th>Límite Superior</th>
 							</tr>
 						</thead>
 						<tbody align="center">
