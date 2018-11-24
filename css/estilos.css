@@ -19,7 +19,7 @@ body{
 	background: #F9F9F9;
 }
 .body-container{
-	height: 100vh;
+	min-height: 100vh;
 	display: grid;
 	grid-template-rows: 60px 1fr 50px;
 }
