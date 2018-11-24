@@ -68,6 +68,37 @@ use PhpOffice\PhpSpreadsheet\Calculation\Statistical;
 /*
 	Esta prueba se realiza con cualquier rango de valores, lo que hace es hallar la media de los aleatorios para luego mediante la distribucion normal con un nivel de confianza de 95% se hallen los limites superiores e inferiores.
 */
+
+/*
+generacion de reportes en excel
+*/
+
+$ruta = "reportes/";
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+
+if (count($numeros)==true) {
+		$n = count($numeros);
+
+	for ($i=1; $i <= $n; $i++) { 
+		
+		$sheet->setCellValue("A$i", "$numeros[$i]");
+		
+	}
+}
+
+$writer = new Xlsx($spreadsheet);
+
+	$writer = new Xlsx($spreadsheet);
+	try{
+		$writer->save($ruta.'file02.xlsx');
+	}
+	catch(Exception $e){
+		echo $e->getMessage();
+	}
+
+/*fin generacion reportes en excel */
+
 $aceptacion = '';
 $varianza = '';
 $chiquad = '';
@@ -142,7 +173,7 @@ $chiquad = '';
 		$writer = new Xlsx($spreadsheet);
 
 		try{
-			$writer->save($ruta.'file02.xlsx');
+			$writer->save($ruta.'file03.xlsx');
 		}
 		catch(Exception $e){
 			echo $e->getMessage();
@@ -370,10 +401,16 @@ $chiquad = '';
 				</div>
 				<div class="box-body">
 					<div class="box-body-firstpart">
+						<p class="title-download">Descargar resultados</p>
 						<a href="reportes/file01.txt" 
-							class="<?php if(count($numeros))echo('active');else echo('not-active'); ?>"
+							class="link-download <?php if(count($numeros))echo('active');else echo('not-active'); ?>"
 							download="aleatorios">
-							<img src="svg/<?php if(count($numeros))echo('icon-download');else echo('icon-download-disabled'); ?>.svg" alt="img-decarga"> Descargar resultados</a>
+							<img src="svg/<?php if(count($numeros))echo('archives');else echo('archives-disabled'); ?>.svg" alt="img-decarga"> Descargar en Texto</a>
+
+						<a href="reportes/file02.xlsx" 
+							class="link-download <?php if(count($numeros))echo('active-green');else echo('not-active'); ?>"
+							download="aleatorios">
+							<img src="svg/<?php if(count($numeros))echo('xlsx-file-green');else echo('xlsx-file-disabled'); ?>.svg" alt="img-decarga"> Descargar en Excel</a>
 					</div>
 					<div class="box-body-secondpart">
 						<p>Sobre la aplicación</p>
@@ -381,7 +418,7 @@ $chiquad = '';
 						<p>Curso: Simulación de Sistemas</p>
 						<p>Docente: Ing. Luis Jhonson Paúl Mori Sosa</p>
 						<p>Lenguaje de Programación: php</p>
-						<p>Codigo funte: <a href="https://github.com/D4ITON/generate_random" target="_blank">source</a></p>
+						<p>Código funte: <a href="https://github.com/D4ITON/generate_random" target="_blank">source</a></p>
 						<p>Versión: 1.2.1</p>
 					</div>
 				</div>

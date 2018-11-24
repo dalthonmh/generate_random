@@ -191,6 +191,14 @@ body{
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
+}
+.resultados .box-body .box-body-firstpart .title-download{
+	border-bottom: 1px solid #eee;
+	margin-bottom: 1em;
+}
+.resultados .box-body .box-body-firstpart .link-download{
+	margin: .4em 0;
 }
 .resultados .box-body .box-body-firstpart img{
 	width: 1.3em;
@@ -198,6 +206,9 @@ body{
 }
 .resultados .box-body .box-body-firstpart .active{
 	color: #1A73E8;
+}
+.resultados .box-body .box-body-firstpart .active-green{
+	color: #10B22B;
 }
 .resultados .box-body .box-body-firstpart .not-active {
   pointer-events: none;
